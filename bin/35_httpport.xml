@@ -1,0 +1,8 @@
+<httpserver name="HTTP-port" class="com.HttpAdapterServerQ2" logger="Q2" realm="SGS-httpserver">
+	<property name="port" value="10012" />
+	<property name="handlers" value="h1,h2" />
+	<property name="h1.urlContext" value="/" />
+	<property name="h1.class" value="com.RootHandler" />
+	<property name="h2.urlContext" value="/test" />
+	<property name="h2.class" value="com.TestHandler" />
+</httpserver>

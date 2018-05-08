@@ -3,6 +3,7 @@ It's a simple compiled HTTP, ISO, RPC, SOAP Server single standalone server usin
 
 # Requirement
 - Java 1.7
+- Eclipse (Kepler)
 
 # To Do
 - HTTP Server ✔

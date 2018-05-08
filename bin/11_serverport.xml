@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<server name="simpleserver" class="org.jpos.q2.iso.QServer" logger="Q2" >
+    <attr name="port" type="java.lang.Integer">10011</attr>
+    <attr name="minSessions" type="java.lang.Integer">1</attr>
+    <attr name="maxSessions" type="java.lang.Integer">150</attr>
+    <channel name="ASCII.channel" class="org.jpos.iso.channel.ASCIIChannel" packager="org.jpos.iso.packager.ISO87APackager"  logger="Q2" realm="channel"/>
+    <request-listener class="com.IsoServerQ2" logger="Q2" realm="info"/>
+</server>

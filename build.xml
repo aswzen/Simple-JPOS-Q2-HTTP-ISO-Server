@@ -1,0 +1,144 @@
+<project name="SimpleGatewayServer" default="deploywar" xmlns:ivy="antlib:org.apache.ivy.ant">
+	
+	<property file="build.properties" />
+        
+    <property name="name" value="SimpleGatewayServer" />
+	<property name="lib.dir" value="lib" />
+	<property name="java.dir" value="src" />
+    <property name="resource.dir" value="src/main/resources" />
+	<property name="webapp.dir" value="src/main/webapp" />
+        
+    <property name="target.dir" value="target" />
+	<property name="build.dir" value="target/classes" />
+	
+	<!-- ivy properties used -->
+    <property name="ivy.settings.dir" value="${user.home}/.ivy2/settings" />
+	
+ 	<path id="lib.path.id">
+		<fileset dir="${lib.dir}" />
+  	</path>
+
+ 	<pathconvert property="class-path" dirsep="/" pathsep=" "
+ 		refid="lib.path.id">
+ 		<map from="${basedir}${file.separator}lib${file.separator}"
+ 			to="" />
+ 	</pathconvert>
+
+ 	<ivy:settings file="${ivy.settings.dir}/settings.xml" />
+          
+	<target name="init">
+		<!-- Create the time stamp -->
+		<tstamp>
+	    	<format property="build.date" pattern="dd-MM-yyyy HH:mm:ss" />
+		</tstamp>
+		<echo message="Build at ${build.date}" />
+	</target>
+
+	<target name="usage" depends="init">
+		<echo message="" />
+		<echo message="${name} build file" />
+		<echo message="-----------------------------------" />
+		<echo message="" />
+		<echo message="Available targets are:" />
+		<echo message="" />
+		<echo message="build          --> Build the application" />
+		<echo message="deploy         --> Deploy application as directory" />
+		<echo message="deploywar      --> Deploy application as a WAR file" />
+		<echo message="" />
+	</target>
+
+	<!-- ================================= 
+		target: resolve              
+		================================= -->
+	<target name="resolve" depends="init" description="--> retrieve dependencies with ivy">
+        <ivy:retrieve />
+    </target>
+
+	<target name="build" depends="resolve" description="Compile main source tree java files">
+		<mkdir dir="${build.dir}" />
+		
+		<javac srcdir="${java.dir}" destdir="${build.dir}" classpathref="lib.path.id" debug="true" deprecation="true" optimize="true" failonerror="true"/>
+		
+		<copy file="${java.dir}/XmlRPC.properties"  todir="${target.dir}/${name}/WEB-INF/classes" />
+		<!--
+		<copy todir="${build.dir}">
+			<fileset dir="${resource.dir}" includes="*.properties" />
+		</copy>
+		
+		
+		<copy todir="${build.dir}/config">
+  			<fileset dir="${resource.dir}/config"/>
+  		</copy>
+  		<copy todir="${build.dir}/templates">
+  			<fileset dir="${resource.dir}/templates"/>
+  		</copy>
+  		-->
+
+	</target>
+	
+	<target name="deploy" depends="build" description="Deploy application">
+  		<mkdir dir="${build.dir}/${name}" />
+  		<mkdir dir="${target.dir}/${name}/WEB-INF/lib" />
+		                
+		<!-- classes etc. -->
+		<copy todir="${target.dir}/${name}/WEB-INF/classes">
+			<fileset dir="${build.dir}">
+				<include name="**/*" />
+			</fileset>
+		</copy>
+
+		<!-- libraries -->
+  		<copy todir="${target.dir}/${name}/WEB-INF/lib">
+  			<fileset dir="${lib.dir}">
+  				<include name="*.jar" />
+  				<exclude name="weblogic*" />
+  				<exclude name="*dbcp*" />
+  				<exclude name="ojdbc*" />
+  				<exclude name="mail*" />
+  				<exclude name="activation*" />
+                <exclude name="servlet-api*" />
+  	  		</fileset>
+  		</copy>
+
+	</target>
+	
+
+	<target name="deploywar" depends="build, deploy" description="Deploy application as a WAR file">
+		<mkdir dir="${target.dir}" />
+
+		<!--war destfile="${build.dir}/dist/${name}_${app.version}.war" webxml="${build.dir}/exploded/${name}/WEB-INF/web.xml"-->
+		<war destfile="${target.dir}/${name}.war" webxml="web.xml">
+			<fileset dir="${target.dir}/${name}">
+				<include name="**/*.*" />
+				<exclude name="banner/**" />
+				<exclude name="e/**" />
+				<exclude name="i/**" />
+				<exclude name="images/**" />
+			</fileset>
+			<manifest>
+				<attribute name="Built-By" value="${user.name}" />
+				<attribute name="Built-Date" value="${build.date}" />
+				<attribute name="Class-path" value="${class-path}"/>
+			</manifest>
+		</war>
+
+		<!--
+		<copy todir="${deploy.path}" preservelastmodified="true">
+			<fileset dir="${target.dir}">
+				<include name="${name}.war" />
+			</fileset>
+		</copy>
+		-->
+
+	</target>
+
+	<target name="clean" depends="init" description="Clean output directories">
+  		<delete dir="${target.dir}/"/>
+		<delete>
+			<fileset dir="${lib.dir}" includes="**/*.*"/>
+		</delete>
+		<delete file="${deploy.path}/${name}.war"/>
+		<!-- ivy:cleancache / -->
+  	</target>
+
+</project>

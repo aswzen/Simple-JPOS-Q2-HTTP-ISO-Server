@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one
+   or more contributor license agreements.  See the NOTICE file
+   distributed with this work for additional information
+   regarding copyright ownership.  The ASF licenses this file
+   to you under the Apache License, Version 2.0 (the
+   "License"); you may not use this file except in compliance
+   with the License.  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing,
+   software distributed under the License is distributed on an
+   "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+   KIND, either express or implied.  See the License for the
+   specific language governing permissions and limitations
+   under the License.    
+-->
+<ivy-module version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="http://ant.apache.org/ivy/schemas/ivy.xsd">
+    <info
+        organisation="com.infinetworks"
+        module="pacarana"
+        status="milestone">
+	</info>
+	<dependencies>
+		<dependency org="org.apache.axis" name="axis" rev="1.4" transitive="false" />
+		<dependency org="axis" name="axis-jaxrpc" rev="1.4" transitive="false" />
+		<dependency org="axis" name="axis-saaj" rev="1.4" transitive="false" />
+	
+		<dependency org="org.apache.ws.commons.axiom" name="axiom-api" rev="1.2.12" transitive="false" />
+		<dependency org="org.apache.ws.commons.axiom" name="axiom-impl" rev="1.2.12" transitive="false" />
+		<dependency org="org.apache.ws.commons.util" name="ws-commons-util" rev="1.0.2"/>
+		<dependency org="org.apache.axis2" name="axis2-adb" rev="1.6.1" transitive="false" />
+		<dependency org="org.apache.axis2" name="axis2-jaxws" rev="1.6.1" transitive="false" />
+		<dependency org="org.apache.axis2" name="axis2-kernel" rev="1.6.1" transitive="false" />
+		<dependency org="org.apache.axis2" name="axis2-transport-http" rev="1.6.1" transitive="false" />
+		<dependency org="org.apache.axis2" name="axis2-transport-local" rev="1.6.1" transitive="false" />
+		
+		<dependency org="commons-codec" name="commons-codec" rev="1.6" transitive="false" />
+		<dependency org="commons-collections" name="commons-collections" rev="3.2.1" transitive="false"/>
+		<dependency org="commons-discovery" name="commons-discovery" rev="0.5" transitive="false" />
+		<dependency org="commons-fileupload" name="commons-fileupload" rev="1.2.1" transitive="false" />
+		<dependency org="commons-httpclient" name="commons-httpclient" rev="3.1" transitive="false" />
+		<dependency org="commons-io" name="commons-io" rev="1.4" transitive="false" />
+		<dependency org="commons-lang" name="commons-lang" rev="2.4" transitive="false" />
+		<dependency org="commons-logging" name="commons-logging" rev="1.1" transitive="false" />
+		
+		
+		<!-- dependency org="org.jboss.as" name="jboss-client-shaded" rev="7.1.1-Final" transitive="false"/ -->
+		<dependency org="org.wildfly" name="jboss-client-shaded" rev="8.1.0.Final"/>
+		<dependency org="javax.jms" name="jms" rev="1.1" transitive="false"/>
+        <dependency org="javax.servlet" name="servlet-api" rev="2.5" transitive="false" />
+		<dependency org="org.jpos" name="jpos-ee" rev="1.6.9" transitive="false" />
+		
+		<dependency org="log4j" name="log4j" rev="1.2.15" transitive="false" />
+		
+		<dependency org="xmlrpc" name="xmlrpc-client" rev="3.1.3" transitive="false" />
+		<dependency org="xmlrpc" name="xmlrpc-common" rev="3.1.3" transitive="false" />
+		<dependency org="xmlrpc" name="xmlrpc-server" rev="3.1.3" transitive="false" />
+				
+		<dependency org="org.json" name="json" rev="20160810"/>
+		<dependency org="org.springframework" name="spring-beans" rev="4.3.6.RELEASE" transitive="false"/>
+		<dependency org="org.springframework" name="spring-web" rev="4.3.6.RELEASE" transitive="false"/>
+		<dependency org="org.springframework" name="spring-core" rev="4.3.6.RELEASE" transitive="false"/>
+		<dependency org="org.apache.httpcomponents" name="httpclient" rev="4.5.3" transitive="false" />
+		<dependency org="org.apache.httpcomponents" name="httpcore" rev="4.4.6" transitive="false" />
+		
+		<dependency org="org.springframework" name="spring-context" rev="4.3.6.RELEASE" transitive="false"/>
+		<dependency org="org.springframework" name="spring-expression" rev="4.3.6.RELEASE" transitive="false"/>
+	</dependencies>
+		
+</ivy-module>

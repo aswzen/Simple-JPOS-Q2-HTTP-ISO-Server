@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="deploy"/>
+	<classpathentry kind="src" path="log"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.apache.ivyde.eclipse.cpcontainer.IVYDE_CONTAINER/?project=02-test-ISO8583&amp;ivyXmlPath=ivy.xml&amp;confs=*&amp;acceptedTypes=jar%2Cbundle%2Cejb%2Cmaven-plugin&amp;alphaOrder=false&amp;resolveInWorkspace=false&amp;transitiveResolve=true&amp;readOSGiMetadata=false&amp;retrievedClasspath=false"/>
+	<classpathentry kind="lib" path="C:/Users/Sigit/.ivy2/cache/javax.servlet/servlet-api/jars/servlet-api-2.5.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
