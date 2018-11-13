@@ -31,7 +31,7 @@ public class IsoServer implements ISORequestListener {
 	private static ISOPackager _PACKAGER;
 	private static ServerChannel _CHANNEL;
 	private static String _HOST_NAME = "127.0.0.1";
-	private static int _SERVER_PORT = 10011;
+	private static int _SERVER_PORT = 10012;
 	
 	public static final String ANSI_RESET = "\u001B[0m";
 	public static final String ANSI_RED = "\u001B[31m";
